@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="myapp">
+   <head>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+      <script src = "./src/controller.js"></script>
+      <link rel="stylesheet" href="./css/style.css">
+   </head>
+   
+   <body ng-controller = "MainController">
+      <div>
+         <h1>Weather App</h1>
+      </div>
+      
+      <form ng-submit="submitTempForm()">
+         <h4>Temperature</h4>
+         <div>
+         <input required placeholder="Temperature" ng-model="temperature" type="number" step=any>
+         <button>Add Temperature</button>
+         </div>
+         <h5>* This field is required</h5>
+      </form>
+      <div id="aggregateDiv">
+         <div>
+            Average: {{aggregatedData.avg}} °c
+         </div>
+         <div>
+            Highest:{{aggregatedData.max}} °c
+         </div>
+         <div>
+            Lowest:{{aggregatedData.min}} °c
+         </div>
+         <div>
+            Median:{{aggregatedData.median}} °c
+         </div>
+
+      </div>
+      
+      <table>
+         <tr>
+            <th>Date</th>
+            <th>Temperature</th>
+            <th>Delete</th>
+         </tr>
+         
+            <tr ng-repeat="data in tempArray">
+            <td>{{ data.date | date:'medium' }}</td>
+              <td>{{data.temp}} °c</td>
+              <td>
+                 <a href="#" ng-click="deleteRecord(data._id)">cancel</a>
+              </td>
+            </tr>
+      </table>
+
+      <script>
+
+      </script>
+      
+   </body>
+</html>
